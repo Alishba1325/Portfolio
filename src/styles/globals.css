@@ -1,0 +1,79 @@
+/* globals.css */
+
+/* Suppress unknown @tailwind warnings for stylelint */
+@stylelint-disable at-rule-no-unknown;
+
+/* Tailwind base, components, utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Body font */
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Card styling */
+.card {
+  @apply bg-white/20 backdrop-blur-md rounded-xl shadow-lg p-6 m-4;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Bounce animations */
+@keyframes bounceSlow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes bounceSlower {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-bounce-slow {
+  animation: bounceSlow 6s infinite ease-in-out;
+}
+
+.animate-bounce-slower {
+  animation: bounceSlower 10s infinite ease-in-out;
+}
+
+/* Spin animations */
+@keyframes spinSlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes spinSlower {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-spin-slower {
+  animation: spinSlower 25s linear infinite;
+}
+
+/* Section backgrounds
+#home { background: linear-gradient(to bottom, #eff6ff, #fbcfe8); }
+#about { background: linear-gradient(to bottom, #fef3c7, #d9f99d); }
+#experience { background: linear-gradient(to bottom, #ede9fe, #fbcfe8); }
+#resume { background: linear-gradient(to bottom, #dbeafe, #bfdbfe); }
+#projects { background: linear-gradient(to bottom, #fef9c3, #fde68a); }
+#certifications { background: linear-gradient(to bottom, #e0f2fe, #bae6fd); }
+#contact { background: linear-gradient(to bottom, #fef2f2, #fee2e2); }
+#footer { background: linear-gradient(to bottom, #f3f4f6, #d1d5db); } */
