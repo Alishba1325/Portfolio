@@ -1,175 +1,130 @@
-// import React from 'react'
 
-// export default function Resume() {
-//   return (
-//     <section id="resume" className="py-20 px-6 bg-white">
-//       <h2 className="text-3xl font-bold text-center mb-12 fade-in" style={{ animationDelay: '0.1s' }}>Resume & Education</h2>
-//       <div className="max-w-4xl mx-auto text-center">
-//         <div className="card fade-in mb-6 transform hover:scale-105 transition-all duration-500" style={{ animationDelay: '0.3s' }}>
-//           <h3 className="text-xl font-semibold">Bachelor of Science in Computer Science</h3>
-//           <p className="text-gray-500">ABC University | 2020 - 2024</p>
-//         </div>
-//         <div className="mb-6 fade-in" style={{ animationDelay: '0.5s' }}>
-//           <a 
-//             href="#" 
-//             className="inline-block bg-blue-500 text-white px-6 py-3 rounded-full font-semibold shadow-lg hover:bg-blue-600 transition"
-//           >
-//             Download Resume
-//           </a>
-//         </div>
-//       </div>
-//     </section>
-//   )
-// }
-// import React from 'react'
-
-// // Component for a single Education Card
-// const EducationCard = ({ degree, institution, years }) => (
-//     // Styling matches the centered white card on the black background
-//     <div className="bg-white p-6 rounded-lg shadow-xl max-w-md mx-auto text-black text-center">
-//         <h3 className="text-xl font-bold mb-1">{degree}</h3>
-//         {/* Adjusted year color to match the subtle text color */}
-//         <p className="text-gray-700">{institution} | {years}</p>
-//     </div>
-// );
-
-// export default function Resume() {
-//     return (
-//         // Changed background to black and default text to white
-//         <section id="resume" className="py-20 px-6 bg-black text-white">
-//             <div className="max-w-7xl mx-auto text-center pt-10 pb-20">
-                
-//                 {/* Ghost Text for Resume & Education (Matches the design) */}
-//                 <div className="relative mb-12">
-//                      <div className="absolute inset-0 flex items-center justify-center 
-//                                     text-[180px] font-extrabold text-white opacity-[0.05] 
-//                                     pointer-events-none whitespace-nowrap leading-none z-0">
-//                         Resume
-//                     </div>
-                    
-//                     {/* Main Heading (Adjusted size and style) */}
-//                     <h2 className="text-5xl font-extrabold relative z-10 text-white inline-block">
-//                         Resume & Education
-//                     </h2>
-//                 </div>
-
-//                 {/* Education Card Container */}
-//                 <div className="mt-12">
-//                     <EducationCard 
-//                         degree="Bachelor of Science in Computer Science" 
-//                         institution="ABC University" 
-//                         years="2020 - 2024"
-//                     />
-//                 </div>
-                
-//                 {/* Download Resume Button (Changed to Yellow/Black style) */}
-//                 <a 
-//                     href="/path/to/your/resume.pdf" 
-//                     download 
-//                     // Yellow button styling to match LinkedIn button
-//                     className="inline-block mt-10 py-3 px-8 
-//                                bg-yellow-500 text-black 
-//                                font-bold text-lg tracking-wider rounded-lg 
-//                                hover:bg-yellow-600 transition duration-300"
-//                 >
-//                     Download Resume
-//                 </a>
-//             </div>
-//         </section>
-//     )
-// }
+// 
 import React from 'react';
+import { motion } from 'framer-motion';
 
-// Actual Education Data from Alishba Jawaid's CV
+
 const educationData = [
     {
         degree: "Bachelors in Computer System Engineering",
         institution: "DUET",
-        period: "Oct 2022 - Present",
-        gpa: "GPA: 3.944"
+        period: "OCT 2022 - PRESENT",
+        score: "GPA: 3.944",
     },
     {
         degree: "Intermediate (Pre-Engineering)",
         institution: "BAMM PECHS Govt. College for Women",
         period: "2019 - 2021",
-        percentage: "86%"
-    },
+        score: "86%",
+    }
 ];
 
-// Component for a single Education Card (Styled like Image 33.png)
-const EducationCard = ({ degree, institution, period, gpa, percentage }) => (
-    // Card styling mimics the black background with yellow border outline (Image 33.png)
-    <div className="bg-black p-6 rounded-lg border border-yellow-500 shadow-xl 
-                    text-white text-center h-full flex flex-col justify-center 
-                    transform hover:scale-[1.05] transition duration-500 min-h-[150px]">
-        
-        {/* Period is yellow and bold, like the reference image */}
-        <p className="text-yellow-500 font-bold mb-1 uppercase text-sm">{period}</p>
-        
-        <h3 className="text-xl font-bold mb-1 leading-tight">{degree}</h3>
-        
-        {/* Institution and GPA/Percentage in subtle gray text */}
-        <p className="text-gray-400 text-sm">
-            {institution}
-            {(gpa || percentage) && ` | ${gpa || percentage}`}
-        </p>
-    </div>
-);
-
-// Define the introductory paragraph content here
 const resumeParagraph = "Hi, I'm Alishba Jawaid, a motivated Computer Systems Engineering student with strong skills in software development, Python, JavaScript, data analysis, and web development. I have developed expertise in AI/ML model building, dashboard creation, and full-stack application development. My passion lies in delivering innovative, high-quality solutions. I am committed to continuous learning and eager to contribute to collaborative teams in data analytics and AI/ML, aligning my technical expertise with leadership aspirations in the tech industry.";
 
+// Reusable Aesthetic Card Component
+const EducationCard = ({ edu, index }) => (
+    <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: index * 0.2 }}
+        whileHover={{ y: -10 }}
+        className="group relative w-full h-full"
+    >
+        {/* Yellowish Glowing Light Effect (Background) */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-yellow-500/50 via-yellow-200/5 to-transparent rounded-2xl blur-lg opacity-20 group-hover:opacity-60 transition duration-500"></div>
+        
+        {/* Main Content Container */}
+        <div className="relative h-full bg-[#080808] border border-white/10 group-hover:border-yellow-500/50 p-8 rounded-2xl flex flex-col items-center text-center transition-all duration-300">
+            
+            <div className="text-yellow-500 font-bold text-xs tracking-[0.3em] mb-4 bg-yellow-500/10 px-4 py-1 rounded-full border border-yellow-500/20">
+                {edu.period}
+            </div>
+            
+            <h3 className="text-xl md:text-2xl font-black text-white mb-3 group-hover:text-yellow-500 transition-colors">
+                {edu.degree}
+            </h3>
+            
+            <p className="text-gray-400 text-sm font-medium tracking-wide">
+                {edu.institution} 
+                <span className="block mt-2 text-yellow-500/80 font-bold italic">{edu.score}</span>
+            </p>
+
+            {/* Bottom Accent Decor */}
+            <div className="mt-6 w-12 h-1 bg-yellow-500/20 group-hover:w-24 group-hover:bg-yellow-500 transition-all duration-500 rounded-full"></div>
+        </div>
+    </motion.div>
+);
 
 export default function Resume() {
     return (
-        <section id="resume" className="py-20 px-6 bg-black text-white">
-            <div className="max-w-7xl mx-auto text-center pt-10 pb-20">
+        <section id="resume" className="relative py-32 px-6 bg-black text-white overflow-hidden">
+            
+            {/* Background Decorative Element (Golden Glow) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-yellow-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+
+            <div className="max-w-7xl mx-auto relative z-10 text-center">
                 
-                {/* Ghost Text for Resume & Education (Matches the design) */}
-                <div className="relative mb-12">
-                     <div className="absolute inset-0 flex items-center justify-center 
-                                    text-[180px] font-extrabold text-white opacity-[0.05] 
-                                    pointer-events-none whitespace-nowrap leading-none z-0">
-                        Resume
-                    </div>
+                {/* Heading Area with Ghost Text */}
+                <div className="relative mb-20">
+                    <motion.div 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.04 }}
+                        className="absolute inset-0 flex items-center justify-center text-[100px] md:text-[200px] font-black text-white pointer-events-none select-none uppercase leading-none"
+                    >
+                        Success
+                    </motion.div>
                     
-                    {/* Main Heading */}
-                    <h2 className="text-5xl font-extrabold relative z-10 text-white inline-block">
-                        Resume & Education
-                    </h2>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        className="text-5xl md:text-7xl font-black relative z-10 tracking-tighter"
+                    >
+                        Resume & <span className="text-yellow-500">Education.</span>
+                    </motion.h2>
+                    <div className="w-24 h-1.5 bg-yellow-500 mx-auto mt-6 rounded-full shadow-[0_0_15px_rgba(234,179,8,0.5)]"></div>
                 </div>
 
-                {/* FIX: INTRODUCTORY PARAGRAPH ADDED HERE */}
-                <p className="max-w-3xl mx-auto text-gray-300 text-center mb-16 relative z-10 leading-relaxed">
-                    {resumeParagraph}
-                </p>
-                {/* END OF FIX */}
+                {/* Intro Paragraph with Aesthetic border */}
+                <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    className="max-w-3xl mx-auto mb-20 relative"
+                >
+                    <p className="text-gray-300 text-lg md:text-xl leading-relaxed font-light italic border-l-2 border-r-2 border-yellow-500/20 px-8">
+                        "{resumeParagraph}"
+                    </p>
+                </motion.div>
 
-                {/* Education Cards Container (2-Column Layout, Image 33.png) */}
-                <div className="mt-16 grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                {/* Grid Layout for Education Cards */}
+                <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto mb-20 items-stretch">
                     {educationData.map((edu, index) => (
-                        <EducationCard 
-                            key={index} 
-                            degree={edu.degree} 
-                            institution={edu.institution} 
-                            period={edu.period}
-                            gpa={edu.gpa}
-                            percentage={edu.percentage}
-                        />
+                        <EducationCard key={index} edu={edu} index={index} />
                     ))}
                 </div>
-                
-                {/* Download Resume Button (Yellow/Black style) */}
-                <a 
-                    href="/path/to/your/resume.pdf" // Update with the actual file path
-                    download 
-                    className="inline-block mt-16 py-3 px-8 
-                               bg-yellow-500 text-black 
-                               font-bold text-lg tracking-wider rounded-lg 
-                               hover:bg-yellow-600 transition duration-300"
+
+                {/* Premium Animated Download Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
                 >
-                    DOWNLOAD CV
-                </a>
+                    <a 
+                        href="/alishbaresume.pdf"
+                       
+                        download
+                        className="group relative inline-flex items-center justify-center overflow-hidden rounded-full p-5 px-14 font-black text-black transition duration-300 ease-out bg-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.2)] hover:shadow-yellow-500/60"
+                    >
+                        <span className="absolute inset-0 h-full w-full bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
+                        <span className="relative flex items-center gap-4 text-xs uppercase tracking-[0.4em]">
+                            <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                            </svg>
+
+                            Download My CV
+                        </span>
+                    </a>
+                </motion.div>
             </div>
         </section>
     );
