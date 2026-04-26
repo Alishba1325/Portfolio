@@ -7,8 +7,8 @@ import { FaMapMarkerAlt, FaLinkedinIn, FaEnvelope, FaDownload, FaTwitter, FaFace
 
 const contactDetails = [
     { icon: <FaMapMarkerAlt />, label: 'ADDRESS', value: 'Karachi, Pakistan' },
-    { icon: <FaLinkedinIn />, label: 'LINKEDIN ID', value: 'Zainab lakho', link: 'https://linkedin.com/in/zainab-lakho' },
-    { icon: <FaEnvelope />, label: 'EMAIL ADDRESS', value: 'zainablakho2005@gmail.com' },
+    { icon: <FaLinkedinIn />, label: 'LINKEDIN ID', value: 'Alishba Jawaid Iqbal ', link: 'https://www.linkedin.com/in/alishba-jawaid-047816265/' },
+    { icon: <FaEnvelope />, label: 'EMAIL ADDRESS', value: 'alishbajawaid13@gmail.com' },
     { icon: <FaDownload />, label: 'DOWNLOAD RESUME', value: 'resumelink', link: '/path/to/resume.pdf' },
 ];
 
